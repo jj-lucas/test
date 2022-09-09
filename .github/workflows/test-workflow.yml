@@ -19,10 +19,13 @@ jobs:
           node-version: "16"
 
       - name: Install
+        working-directory: ./backend
         run: yarn
 
       - name: Build backend
+        working-directory: ./backend
         run: npx tsc
 
       - name: Start backend
+        working-directory: ./backend
         run: yarn start
