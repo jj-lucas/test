@@ -1,28 +1,28 @@
 name: test-workflow
 on:
-	pull_request:
-		branches:
-			- master
-		types:
-			- closed
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
 jobs:
-	build-backend:
-		if: github.event.pull_request.merged == true
-		runs-on: ubuntu-latest
-		steps:
-			- name: Checkout Code
-				uses: actions/checkout@v3
+  build-backend:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-			- name: Setup Node
-				uses: actions/setup-node@v3
-				with:
-					node-version: "16"
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
 
-			- name: Install
-				run: yarn
+      - name: Install
+        run: yarn
 
-			- name: Build backend
-				run: npx tsc
+      - name: Build backend
+        run: npx tsc
 
-			- name: Start backend
-				run: yarn start
+      - name: Start backend
+        run: yarn start
