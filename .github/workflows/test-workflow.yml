@@ -40,4 +40,4 @@ jobs:
 
       - name: Rsync built backend
         working-directory: ./backend
-        run: rsync -avz ./dist/ web@68.183.70.122:test/
+        run: rsync -avz ./dist/ web@${{ secrets.SSH_HOST }} :test/
