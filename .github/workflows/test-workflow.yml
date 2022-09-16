@@ -48,4 +48,4 @@ jobs:
 
       - name: SSH into server
         working-directory: ./backend
-        run: ssh web@${{ secrets.SSH_HOST }} 'pm2 restart backend'
+        run: ssh web@${{ secrets.SSH_HOST }} 'source ~/.nvm/nvm.sh && pm2 restart backend'
