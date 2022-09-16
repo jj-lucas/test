@@ -47,4 +47,5 @@ jobs:
         run: rsync -avz ./node_modules/ web@${{ secrets.SSH_HOST }}:test/node_modules
 
       - name: SSH into server
-        run: ssh web@${{ secrets.SSH_HOST }} 'npx pm2 restart backend'
+        working-directory: ./backend
+        run: ssh web@${{ secrets.SSH_HOST }} 'pm2 restart backend'
