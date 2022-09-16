@@ -6,7 +6,7 @@ on:
     types:
       - closed
 jobs:
-  build-backend:
+  deploy-backend:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
@@ -45,3 +45,6 @@ jobs:
       - name: Rsync node modules
         working-directory: ./backend
         run: rsync -avz ./node_modules/ web@${{ secrets.SSH_HOST }}:test/node_modules
+
+      - name: SSH into server
+        run: ssh web@${{ secrets.SSH_HOST }} 'whoami && cd test && ls'
